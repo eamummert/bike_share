@@ -1,0 +1,166 @@
+routes:
+    app:
+        type: 'Literal'
+        options:
+            route: '/'
+            defaults: {controller: 'App:Index', action: 'index'}
+        may_terminate: true
+        child_routes:
+            admin:
+                type: 'Literal'
+                options:
+                    route: 'admin'
+                    defaults: {controller: 'App:Admin', action: 'users'}
+                may_terminate: true
+                child_routes:
+                    movies:
+                        type: 'Literal'
+                        options:
+                            route: '/manage-movies'
+                            defaults: {action: 'movies'}
+                    television:
+                        type: 'Literal'
+                        options:
+                            route: '/manage-television'
+                            defaults: {action: 'television'}
+                    transmission:
+                        type: 'Literal'
+                        options:
+                            route: '/transmission'
+                            defaults: {action: 'transmission'}
+                        may_terminate: true
+                        child_routes:
+                            action:
+                                type: 'Literal'
+                                options:
+                                    route: '/action'
+                                    defaults: {action: 'transmissionAction'}
+            music:
+                type: 'Literal'
+                options:
+                    route: 'music'
+                    defaults: {controller: 'App:Music'}
+                may_terminate: true
+                child_routes:
+                    action:
+                        type: 'Literal'
+                        options:
+                            route: '/mpd-action'
+                            defaults: {action: 'mpd'}
+                    search:
+                        type: 'Literal'
+                        options:
+                            route: '/mpd-search'
+                            defaults: {action: 'mpdSearch'}
+            user:
+                type: 'Segment'
+                options:
+                    route: 'user[/:user-id]'
+                    defaults: {controller: 'App:User', action: 'view'}
+                may_terminate: true
+                child_routes:
+                    edit:
+                        type: 'Literal'
+                        options:
+                            route: '/edit'
+                            defaults: {action: 'edit'}
+            movies:
+                type: 'Literal'
+                options:
+                    route: 'movie'
+                    defaults: {controller: 'App:Movie'}
+                may_terminate: true
+                child_routes:
+                    create:
+                        type: 'Literal'
+                        options:
+                            route: '/create'
+                            defaults: {action: 'create'}
+                    edit:
+                        type: 'Segment'
+                        options:
+                            route: '/:movie-id/edit'
+                            defaults: {action: 'create'}
+                    import:
+                        type: 'Literal'
+                        options:
+                            route: '/import'
+                            defaults: {action: 'import'}
+                    view:
+                        type: 'Segment'
+                        options:
+                            route: '/:movie-id/view'
+                            defaults: {action: 'view'}
+            television:
+                type: 'Literal'
+                options:
+                    route: 'television'
+                    defaults: {controller: 'App:Television'}
+                may_terminate: true
+                child_routes:
+                    showCreate:
+                        type: 'Literal'
+                        options:
+                            route: '/create-show'
+                            defaults: {action: 'editShow'}
+                    showEdit:
+                        type: 'Segment'
+                        options:
+                            route: '/:show-id/edit-show'
+                            defaults: {action: 'editShow'}
+                    seasonCreate:
+                        type: 'Literal'
+                        options:
+                            route: '/create-season'
+                            defaults: {action: 'editSeason'}
+                    seasonEdit:
+                        type: 'Segment'
+                        options:
+                            route: '/:season-id/edit-season'
+                            defaults: {action: 'editSeason'}
+                    episodeCreate:
+                        type: 'Literal'
+                        options:
+                            route: '/create-episode'
+                            defaults: {action: 'editEpisode'}
+                    episodeEdit:
+                        type: 'Segment'
+                        options:
+                            route: '/:episode-id/edit-episode'
+                            defaults: {action: 'editEpisode'}
+                    import:
+                        type: 'Literal'
+                        options:
+                            route: '/import'
+                            defaults: {action: 'import'}
+                    show:
+                        type: 'Segment'
+                        options:
+                            route: '/:show-id/show'
+                            defaults: {action: 'viewShow'}
+                        may_terminate: true
+                        child_routes:
+                            season:
+                                type: 'Segment'
+                                options:
+                                    route: '/:season-num/season'
+                                    defaults: {action: 'viewSeason'}
+                                may_terminate: true
+                                child_routes:
+                                    episode:
+                                        type: 'Segment'
+                                        options:
+                                            route: '/:episode-num/episode'
+                                            defaults: {action: 'viewEpisode'}
+            pidora:
+                type: 'Literal'
+                options:
+                    route: 'pidora-controls'
+                    defaults: {controller: 'App:Index', action: 'pidora'}
+                may_terminate: true
+            transmission:
+                type: 'Literal'
+                options:
+                    route: 'transmission'
+                    defaults: {controller: 'App:Index', action: 'transmission'}
+                may_terminate: true
