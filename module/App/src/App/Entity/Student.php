@@ -31,7 +31,7 @@ class Student extends AbstractEntity
 	/**
 	* @ORM\Column(type="string")
 	*/
-	protected $universityId;
+	protected $username;
 
 	/**
 	* This flags controls whether a person is allowed to checkout bicycles
@@ -44,5 +44,11 @@ class Student extends AbstractEntity
 	{
 		$this->checkOuts = new ArrayCollection;
 		$this->fees = new ArrayCollection;
+	}
+
+	public function addCheckout($checkout)
+	{
+		$this->checkOuts->add($checkout);
+		$checkout->setStudent($this);
 	}
 }

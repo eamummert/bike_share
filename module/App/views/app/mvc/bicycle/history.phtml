@@ -16,7 +16,7 @@
 				<td><?= $co->getOutDock() ? $co->getOutDock()->getName() : '' ?></td>
 				<td><?= $co->getInTime(true) ?></td>
 				<td><?= $co->getInDock() ? $co->getInDock()->getName() : '' ?></td>
-				<td></td>
+				<td><?= $co->getStudent() ? $co->getStudent()->getUsername() : '' ?></td>
 				<td><?= $co->feeToString() ?></td>
 			</tr>
 		<?php endforeach ?>

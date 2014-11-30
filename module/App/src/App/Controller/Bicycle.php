@@ -49,10 +49,20 @@ class Bicycle extends AbstractController
         }
 
         $checkOut = new Entity\CheckOut;
+        $student = $this->entity('Student')->findOneBy(['username' => $this->auth()->getIdentity()->getUsername()]);
+        if (!$student)
+        {
+            $student = new Entity\Student;
+            $student->setUsername($this->auth()->getIdentity()->getUsername());
+        }
+        $student->addCheckout($checkOut);
+
+
         $bike->addCheckOut($checkOut);
         $bike->unDock($checkOut);
         //todo add to a user
 
+        $this->entity()->persist($student);
         $this->entity()->persist($checkOut);
         $this->entity()->flush();
 
