@@ -24,6 +24,11 @@ class Bicycle extends AbstractEntity
 	protected $dock;
 
 	/**
+	* @ORM\Column(type="boolean")
+	*/
+	protected $locked = false;
+
+	/**
 	* @ORM\OneToMany(targetEntity="CheckOut", mappedBy="bicycle")
 	* @ORM\OrderBy({"outTime" = "ASC"})
 	*/
@@ -70,5 +75,15 @@ class Bicycle extends AbstractEntity
 	{
 		$this->dock = $dock;
 		$dock->setBicycle($this);
+	}
+
+	public function lock()
+	{
+		$this->locked = true;
+	}
+
+	public function unLock()
+	{
+		$this->locked = false;
 	}
 }

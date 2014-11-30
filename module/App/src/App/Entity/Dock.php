@@ -72,4 +72,14 @@ class Dock extends AbstractEntity
 		$this->checkIns->add($checkin);
 		$checkin->setInDock($this);
 	}
+
+	public function lock()
+	{
+		$this->locked = true;
+	}
+
+	public function unLock()
+	{
+		$this->locked = false;
+	}
 }
