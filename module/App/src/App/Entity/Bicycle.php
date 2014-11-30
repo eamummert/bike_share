@@ -25,6 +25,7 @@ class Bicycle extends AbstractEntity
 
 	/**
 	* @ORM\OneToMany(targetEntity="CheckOut", mappedBy="bicycle")
+	* @ORM\OrderBy({"outTime" = "ASC"})
 	*/
 	protected $checkOuts;
 
@@ -39,9 +40,10 @@ class Bicycle extends AbstractEntity
 		$this->gpsData = new ArrayCollection;
 	}
 
-	public function unDock()
+	public function unDock($checkout)
 	{
 		$this->dock->setBicycle(null);
+		$this->dock->addCheckout($checkout);
 		$this->dock = null;
 	}
 

@@ -36,4 +36,9 @@ class Fee extends AbstractEntity
 	* @ORM\Column(type="boolean")
 	*/
 	protected $paid = false;
+
+	public function paidToString()
+	{
+		return $paid ? 'Paid' : 'Unpaid';
+	}
 }

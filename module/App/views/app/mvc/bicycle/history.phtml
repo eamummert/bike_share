@@ -1,0 +1,28 @@
+<h1>Bicycle History: <?= $bike->getId() ?></h1>
+
+<table class="gray full-width">
+	<tr>
+		<th>Out Time</th>
+		<th>Out Dock</th>
+		<th>In Time</th>
+		<th>In Dock</th>
+		<th>Student</th>
+		<th>Fee</th>
+	</tr>
+	<?php if (count($bike->getCheckOuts())): ?>
+		<?php foreach ($bike->getCheckOuts() as $co): ?>
+			<tr>
+				<td><?= $co->getOutTime(true) ?></td>
+				<td><?= $co->getOutDock() ? $co->getOutDock()->getName() : '' ?></td>
+				<td><?= $co->getInTime(true) ?></td>
+				<td><?= $co->getInDock() ? $co->getInDock()->getName() : '' ?></td>
+				<td></td>
+				<td><?= $co->feeToString() ?></td>
+			</tr>
+		<?php endforeach ?>
+	<?php else: ?>
+		<tr>
+			<td colspan="6">There is no history for this bicycle</td>
+		</tr>
+	<?php endif ?>
+</table>

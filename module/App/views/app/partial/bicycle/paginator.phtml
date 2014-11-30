@@ -12,4 +12,5 @@
 	<?php else: ?>
 		<a href="<?= $this->url('app/bicycles/checkin', ['bike-id' => $item->getId()]) ?>">Check-In</a>
 	<?php endif ?>
+	| <a href="<?= $this->url('app/bicycles/history', ['bike-id' => $item->getId()]) ?>">History</a>
 <?php endif ?>

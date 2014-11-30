@@ -50,7 +50,7 @@ class Bicycle extends AbstractController
 
         $checkOut = new Entity\CheckOut;
         $bike->addCheckOut($checkOut);
-        $bike->unDock();
+        $bike->unDock($checkOut);
         //todo add to a user
 
         $this->entity()->persist($checkOut);
@@ -74,14 +74,6 @@ class Bicycle extends AbstractController
             return $this->redirect()->toRoute('app/bicycles');
         }
 
-        $checkout = $bike->getCurrentCheckout();
-        //this is for new bikes being docked initially but weren't checked out
-        if ($checkout)
-        {
-            $checkout->setInTime(new DateTime);
-        }
-        //todo calculate fees
-
         //just check it in to a random available dock for the demo
         $docks = $this->entity('Dock')->findBy(['bicycle' => null]);
         $rand = rand(0, count($docks)-1);
@@ -93,10 +85,31 @@ class Bicycle extends AbstractController
         }
 
         $bike->setDock($dock);
+
+        $checkout = $bike->getCurrentCheckout();
+        //this is for new bikes being docked initially but weren't checked out
+        if ($checkout)
+        {
+            $checkout->setInTime(new DateTime);
+            $dock->addCheckIn($checkout);
+        }
+        //todo calculate fees
         
         $this->entity()->flush();
 
         $this->flash()->addSuccessMessage('Bicycle has been checked in successfully');
         return $this->redirect()->toRoute('app/bicycles');
+    }
+
+    public function historyAction()
+    {
+        $bike = $this->entity('Bicycle')->find($this->params('bike-id'));
+        if (!$bike)
+        {
+            $this->flash()->addErrorMessage('There is no bicycle with that ID');
+            return $this->redirect()->toRoute('app/bicycles');
+        }
+
+        return compact('bike');
     }
 }

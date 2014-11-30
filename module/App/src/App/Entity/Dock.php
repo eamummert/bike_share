@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Libs\Entity\AbstractEntity;
 
@@ -21,6 +22,16 @@ class Dock extends AbstractEntity
 	* @ORM\OneToOne(targetEntity="Bicycle", inversedBy="dock")
 	*/
 	protected $bicycle;
+
+	/**
+	* @ORM\OneToMany(targetEntity="CheckOut", mappedBy="outDock")
+	*/
+	protected $checkOuts;
+
+	/**
+	* @ORM\OneToMany(targetEntity="CheckOut", mappedBy="inDock")
+	*/
+	protected $checkIns;
 
 	/**
 	* @ORM\Column(type="boolean")
@@ -43,4 +54,22 @@ class Dock extends AbstractEntity
 	* @ORM\Column(type="string", nullable=true)
 	*/
 	protected $name;
+
+	public function __construct()
+	{
+		$this->checkOuts = new ArrayCollection;
+		$this->checkIns = new ArrayCollection;
+	}
+
+	public function addCheckout($checkout)
+	{
+		$this->checkOuts->add($checkout);
+		$checkout->setOutDock($this);
+	}
+
+	public function addCheckin($checkin)
+	{
+		$this->checkIns->add($checkin);
+		$checkin->setInDock($this);
+	}
 }

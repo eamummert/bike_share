@@ -45,13 +45,48 @@ class CheckOut extends AbstractEntity
 	protected $outTime;
 
 	/**
+	* @ORM\ManyToOne(targetEntity="Dock", inversedBy="checkOuts")
+	*/
+	protected $outDock;
+
+	/**
 	* @ORM\Column(type="datetime", nullable=true)
 	*/
 	protected $inTime;
+
+	/**
+	* @ORM\ManyToOne(targetEntity="Dock", inversedBy="checkIns")
+	*/
+	protected $inDock;
 
 	public function __construct()
 	{
 		$this->gpsData = new ArrayCollection;
 		$this->outTime = new DateTime;
+	}
+
+	public function getOutTime($format = false)
+	{
+		if ($format)
+		{
+			return $this->outTime->format('d M Y, h:i:s A');
+		}
+
+		return $this->outTime;
+	}
+
+	public function getInTime($format = false)
+	{
+		if ($format)
+		{
+			return $this->inTime ? $this->inTime->format('d M Y, h:i:s A') : 'None';
+		}
+
+		return $this->inTime;
+	}
+
+	public function feeToString()
+	{
+		return $this->fee ? "${$this->fee->getCharge()}, {$this->fee->paidToString()}" : 'N/A';
 	}
 }
