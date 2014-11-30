@@ -94,6 +94,7 @@ class Bicycle extends AbstractController
             $dock->addCheckIn($checkout);
         }
         //todo calculate fees
+        $checkout->assignFees();
         
         $this->entity()->flush();
 

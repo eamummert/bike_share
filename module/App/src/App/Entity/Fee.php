@@ -39,6 +39,6 @@ class Fee extends AbstractEntity
 
 	public function paidToString()
 	{
-		return $paid ? 'Paid' : 'Unpaid';
+		return $this->paid ? 'Paid' : 'Unpaid';
 	}
 }

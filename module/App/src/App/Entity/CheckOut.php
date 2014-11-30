@@ -35,7 +35,7 @@ class CheckOut extends AbstractEntity
 	protected $student;
 
 	/**
-	* @ORM\OneToOne(targetEntity="Fee", inversedBy="checkout")
+	* @ORM\OneToOne(targetEntity="Fee", inversedBy="checkout", cascade={"persist"})
 	*/
 	protected $fee;
 
@@ -87,6 +87,32 @@ class CheckOut extends AbstractEntity
 
 	public function feeToString()
 	{
-		return $this->fee ? "${$this->fee->getCharge()}, {$this->fee->paidToString()}" : 'N/A';
+		return $this->fee ? '$' . "{$this->fee->getCharge()}, {$this->fee->paidToString()}" : 'N/A';
+	}
+
+	public function assignFees()
+	{
+		if (!$this->inTime)
+		{
+			return false;
+		}
+		$diff = strtotime($this->getInTime(true)) - strtotime($this->getOutTime(true));
+		if ($diff > 10)
+		{
+			$fee = new Fee;
+			if ($diff > 30)
+			{
+				$fee->setCharge(5);
+			}
+			elseif ($diff > 20)
+			{
+				$fee->setCharge(3);
+			}
+			elseif ($diff > 10)
+			{
+				$fee->setCharge(1);
+			}
+			$this->setFee($fee);
+		}
 	}
 }
