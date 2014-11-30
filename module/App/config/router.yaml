@@ -43,6 +43,12 @@ routes:
                             route: '/:bike-id/checkin'
                             defaults: {action: 'checkin'}
                         may_terminate: true
+                    lock:
+                        type: 'Segment'
+                        options:
+                            route: '/:bike-id/lock'
+                            defaults: {action: 'lock'}
+                        may_terminate: true
                     history:
                         type: 'Segment'
                         options:

@@ -8,11 +8,13 @@
 	<?php endif ?>
 <?php elseif ($column == 'actions'): ?>
 	<?php if ($dock = $item->getDock()): ?>
-		<a href="<?= $this->url('app/bicycles/checkout', ['bike-id' => $item->getId()]) ?>">Check-Out</a>
+		<?php if (!$item->isLocked()): ?>
+			<a href="<?= $this->url('app/bicycles/checkout', ['bike-id' => $item->getId()]) ?>">Check-Out</a> |
+		<?php endif ?>
 	<?php else: ?>
-		<a href="<?= $this->url('app/bicycles/checkin', ['bike-id' => $item->getId()]) ?>">Check-In</a>
+		<a href="<?= $this->url('app/bicycles/checkin', ['bike-id' => $item->getId()]) ?>">Check-In</a> |
 	<?php endif ?>
-	| <a href="<?= $this->url('app/bicycles/history', ['bike-id' => $item->getId()]) ?>">History</a>
+	<a href="<?= $this->url('app/bicycles/history', ['bike-id' => $item->getId()]) ?>">History</a>
 	<?php if ($item->isLocked()): ?>
 		| <a href="<?= $this->url('app/bicycles/lock', ['bike-id' => $item->getId()]) ?>">Unlock</a>
 	<?php else: ?>

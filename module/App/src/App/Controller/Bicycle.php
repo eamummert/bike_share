@@ -124,8 +124,33 @@ class Bicycle extends AbstractController
         else
 	{
             $bike->switchLock();
+            $this->entity()->flush();
         }
         return $this->redirect()->toRoute('app/bicycles');
     }
+
+    public function LockallAction()
+    {
+        $bikes = $this->entity('Bicycle')->findAll();
+
+	foreach($bikes as $bike)
+	{
+		$bike->lock();
+	}
+        $this->entity()->flush();
+        return $this->redirect()->toRoute('app/bicycles');
+    }
+    public function UnlockallAction()
+    {
+        $bikes = $this->entity('Bicycle')->findAll();
+
+	foreach($bikes as $bike)
+	{
+		$bike->unlock();
+	}
+        $this->entity()->flush();
+        return $this->redirect()->toRoute('app/bicycles');
+    }
+
 
 }
