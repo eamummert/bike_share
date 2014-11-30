@@ -86,4 +86,8 @@ class Bicycle extends AbstractEntity
 	{
 		$this->locked = false;
 	}
+	public function switchLock()
+	{
+		$this->locked = !$this->locked;
+	}
 }
