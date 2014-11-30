@@ -2041,12 +2041,12 @@ table.gray th, table.gray td {
     vertical-align: top; }
 
 table.gray thead tr th {
-    background-color: #353535;
+    background-color: #656565;
     border-color: #000; }
 
 table.gray tbody th {
     background-color: #eee;
-    border-color: #a7a7a7; }
+}
 
 table.gray tr.dark-title th,
 .table .dark-title th {
@@ -2056,11 +2056,11 @@ table.gray tr.dark-title th,
 
 table.gray tbody tr:nth-child(even) td,
 table.gray tbody tr.even td {
-    background-color: #4E4E4E; }
+    background-color: #888888; }
 
 table.gray tbody tr:nth-child(odd) td,
 table.gray tbody tr.odd td {
-    background-color: #5A5A5A; }
+    background-color: #999999; }
 
 table.gray tbody tr td.ops,
 table.cream tbody tr td.ops {

@@ -50,27 +50,10 @@ class User extends AbstractEntity implements UserInterface
 	*/
 	protected $lastAccess;
 
-	/**
-	*@ORM\Column(type="datetime")
-	*/
-	protected $creationDate;
-
-	/**
-	*@ORM\Column(type="integer")
-	*/
-	protected $maxMovieRating;
-
-	/**
-	*@ORM\Column(type="integer")
-	*/
-	protected $maxTvRating;
-
 	public function __construct()
 	{
 		$this->lastAccess = new \DateTime();
 		$this->creationDate = $this->lastAccess;
-		$this->maxMovieRating = AppEntity\Movie::RATING_R;
-		$this->maxTvRating = AppEntity\TvShow::RATING_TVMA;
 	}
 
 	/**
@@ -161,36 +144,6 @@ class User extends AbstractEntity implements UserInterface
 	public function setCreationDate($creationDate)
 	{
 		$this->creationDate = $creationDate;
-	}
-
-	/**
-	* Helper Methods
-	*/
-
-	public function formatLastAccess($format = 'd M Y, h:i A')
-	{
-		return $this->lastAccess->format($format);
-	}
-
-	public function formatCreationDate($format = 'd M Y, h:i A')
-	{
-		return $this->creationDate->format($format);
-	}
-
-	public function promote()
-	{
-		if ($this->state < Roles::ROLE_ADMIN)
-		{
-			$this->state++;
-		}
-	}
-	
-	public function demote()
-	{
-		if ($this->state > Roles::ROLE_BANNED)
-		{
-			$this->state--;
-		}
 	}
 
 	public function setPasswordVerify() {}

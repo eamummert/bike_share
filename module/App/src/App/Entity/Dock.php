@@ -38,9 +38,9 @@ class Dock extends AbstractEntity
 	protected $longitude;
 
 	/**
-	* Description of location. Ex. Carver Hall, Memorial Union South, etc.
+	* Name of location. Ex. Carver Hall, Memorial Union South, etc.
 	*
 	* @ORM\Column(type="string", nullable=true)
 	*/
-	protected $location;
+	protected $name;
 }

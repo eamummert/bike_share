@@ -1,0 +1,9 @@
+<?php if ($column == 'name'): ?>
+	<?= $item->getName() ?>
+<?php elseif ($column == 'bicycle'): ?>
+	<?php if ($item->getBicycle()): ?>
+		<?= $bike->getId() ?>
+	<?php else: ?>
+		N/A
+	<?php endif ?>
+<?php endif ?>

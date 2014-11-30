@@ -40,7 +40,7 @@ return [
 	],
 	'service_manager' => [
         'factories' => [
-            'Zend\Db\Adapter\Adapter' => function ($sm) use ($dbParams) {
+            'Zend\Db\Adapter\Adapter' => function() {
                 $adapter = new BjyProfiler\Db\Adapter\ProfilingAdapter([
                     'driver'    => 'pdo',
                     'dsn'       => 'pgsql:dbname=media;host=localhost',

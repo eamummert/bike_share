@@ -145,20 +145,6 @@ div.container a.brand {
     left: -6px;
 }
 
-a {
-	color: #58BB12;
-    text-decoration: underline;
-}
-
-a:hover {
-    color: #269600;
-    text-decoration: underline;
-}
-
-span.next a:hover, span.prev a:hover {
-	color: #269600;
-}
-
 .Button.selected {
 	background-color: #4C4C4C;
 	border: 1px solid #333;

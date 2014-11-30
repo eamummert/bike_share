@@ -12,12 +12,8 @@ return [
     // Placeholder for console routes
     'controllers' => [
         'invokables' => [
-			'App:Admin' => 'App\Controller\Admin',
             'App:Index' => 'App\Controller\Index',
-			'App:Movie' => 'App\Controller\Movie',
-			'App:Music' => 'App\Controller\Music',
-			'App:Television' => 'App\Controller\Television',
-			'App:User' => 'App\Controller\User',
+			'App:Dock' => 'App\Controller\Dock',
         ],
     ],
     'doctrine' => [
@@ -36,12 +32,6 @@ return [
 	],
 	'form_elements' => [
 		'invokables' => [
-			'App:Movie' => 'App\Form\Movie',
-			'App:TvSeason' => 'App\Form\TvSeason',
-			'App:TvShow' => 'App\Form\TvShow',
-			'App:User' => 'App\Form\User',
-
-			'App:Fieldset:TvSeason' => 'App\Form\Fieldset\TvSeason',
 		],
 	],
 	'libs' => [
@@ -49,12 +39,8 @@ return [
 			'deps' => [
 				'App/js/Global',
 				'App/js/autosize.min',
-				'App/js/video',
 			],
 		],
-	],
-	'mpd_config' => [
-		'port' => 5858
 	],
 	'router' => Yaml::parse(__DIR__ .'/router.yaml'),
     'view_manager' => [
@@ -72,14 +58,9 @@ return [
         ],
         'template_path_stack' => [
             __DIR__ . '/../views',
-        ],
-		'layouts' => [
-			'App:Music' => 'layout/music',
-		],
-    ],
+        ],    ],
 	'view_helpers' => [
 		'factories' => [
-			'CanWatch' => 'App\Factory\View\Helper\CanWatch',
 		],
 	],
 ];

@@ -47,39 +47,9 @@
                         </li>
 						<?php if ($this->isAllowed(array(Roles::ROLE_ADMIN, Roles::ROLE_VIEW, Roles::ROLE_GUEST))): ?>
 							<li class="dropdown">
-								<a href="<?= $this->url('app/movies') ?>">Movies</a>
-								<?php if ($this->isAllowed()): ?>
-									<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-										<li>
-											<a href="<?= $this->url('app/movies/create') ?>">Add Movie</a>
-										</li>
-										<li>
-											<a href="<?= $this->url('app/movies/import') ?>">Import Movie</a>
-										</li>
-									</ul>
-								<?php endif; ?>
+								<a href="<?= $this->url('app/docks') ?>">Docks</a>
 							</li>
 						<?php endif; ?>
-						<?php if ($this->isAllowed(array(Roles::ROLE_ADMIN, Roles::ROLE_VIEW, Roles::ROLE_GUEST))): ?>
-							<li class="dropdown">
-								<a href="<?= $this->url('app/television') ?>">TV Shows</a>
-								<?php if ($this->isAllowed()): ?>
-									<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-										<li>
-											<a href="<?= $this->url('app/television/showCreate') ?>">Add Show</a>
-										</li>
-										<li>
-											<a href="<?= $this->url('app/television/import') ?>">Import Show</a>
-										</li>
-									</ul>
-								<?php endif; ?>
-							</li>
-						<?php endif; ?>
-						<?php if ($this->isAllowed([Roles::ROLE_ADMIN])): ?>
-							<li>
-								<a href="<?= $this->url('app/music') ?>">Music</a>
-							</li>
-						<?php endif ?>
 					</ul>
 					<ul class="nav navbar-nav pull-right">
 						<li>
@@ -90,31 +60,6 @@
 							<?php endif; ?>
 						</li>
                     </ul>
-					<?php if ($this->auth()): ?>
-						<ul class="nav navbar-nav pull-right">
-							<li>
-								<a href="<?= $this->url('app/user') ?>">Account</a>
-							</li>
-						</ul>
-					<?php endif; ?>
-					<?php if ($this->isAllowed()): ?>
-						<ul class="nav navbar-nav pull-right">
-							<li class="dropdown">
-								<a href="<?= $this->url('app/admin') ?>">Admin</a>
-								<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-									<li>
-										<a href="<?= $this->url('app/admin/movies') ?>">Manage Movies</a>
-									</li>
-									<li>
-										<a href="<?= $this->url('app/admin/television') ?>">Manage Television</a>
-									</li>
-									<li>
-										<a href="<?= $this->url('app/admin/transmission') ?>">Transmission</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					<?php endif; ?>
                 </div>
             </div>
         </nav>
