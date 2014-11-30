@@ -112,4 +112,19 @@ class Bicycle extends AbstractController
 
         return compact('bike');
     }
+
+    public function LockAction()
+    {
+        $bike = $this->entity('Bicycle')->find($this->params('bike-id'));
+        if (!$bike)
+        {
+            $this->flash()->addErrorMessage('There is no bicycle with that ID');
+        }
+        else
+	{
+            $bike->switchLock();
+        }
+        return $this->redirect()->toRoute('app/bicycles');
+    }
+
 }
