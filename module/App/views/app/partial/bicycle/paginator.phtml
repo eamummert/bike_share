@@ -1,0 +1,15 @@
+<?php if ($column == 'id'): ?>
+	<?= $item->getId() ?>
+<?php elseif ($column == 'dock'): ?>
+	<?php if ($dock = $item->getDock()): ?>
+		<?= $dock->getName() ?>
+	<?php else: ?>
+		N/A
+	<?php endif ?>
+<?php elseif ($column == 'actions'): ?>
+	<?php if ($dock = $item->getDock()): ?>
+		<a href="<?= $this->url('app/bicycles/checkout', ['bike-id' => $item->getId()]) ?>">Check-Out</a>
+	<?php else: ?>
+		<a href="<?= $this->url('app/bicycles/checkin', ['bike-id' => $item->getId()]) ?>">Check-In</a>
+	<?php endif ?>
+<?php endif ?>

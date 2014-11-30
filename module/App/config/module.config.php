@@ -14,6 +14,7 @@ return [
         'invokables' => [
             'App:Index' => 'App\Controller\Index',
 			'App:Dock' => 'App\Controller\Dock',
+			'App:Bicycle' => 'App\Controller\Bicycle',
         ],
     ],
     'doctrine' => [

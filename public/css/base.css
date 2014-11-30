@@ -52,11 +52,11 @@
     -webkit-text-size-adjust: 100%; }*/
 
 a {
-    color: #269600;
+    color: #000000;
     /*text-decoration: underline; */
 }
 a:hover {
-    color: #269600;
+    color: #000000;
     text-decoration: underline; }
 
 small {
@@ -2041,7 +2041,7 @@ table.gray th, table.gray td {
     vertical-align: top; }
 
 table.gray thead tr th {
-    background-color: #656565;
+    background-color: #888888;
     border-color: #000; }
 
 table.gray tbody th {
@@ -2056,11 +2056,11 @@ table.gray tr.dark-title th,
 
 table.gray tbody tr:nth-child(even) td,
 table.gray tbody tr.even td {
-    background-color: #888888; }
+    background-color: #BBBBBB; }
 
 table.gray tbody tr:nth-child(odd) td,
 table.gray tbody tr.odd td {
-    background-color: #999999; }
+    background-color: #CCCCCC; }
 
 table.gray tbody tr td.ops,
 table.cream tbody tr td.ops {

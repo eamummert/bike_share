@@ -24,3 +24,22 @@ routes:
                     route: 'docks'
                     defaults: {controller: 'App:Dock'}
                 may_terminate: true
+            bicycles:
+                type: 'Literal'
+                options:
+                    route: 'bicycles'
+                    defaults: {controller: 'App:Bicycle'}
+                may_terminate: true
+                child_routes:
+                    checkout:
+                        type: 'Segment'
+                        options:
+                            route: '/:bike-id/checkout'
+                            defaults: {action: 'checkout'}
+                        may_terminate: true
+                    checkin:
+                        type: 'Segment'
+                        options:
+                            route: '/:bike-id/checkin'
+                            defaults: {action: 'checkin'}
+                        may_terminate: true

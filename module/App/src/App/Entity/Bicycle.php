@@ -38,4 +38,35 @@ class Bicycle extends AbstractEntity
 		$this->checkOuts = new ArrayCollection;
 		$this->gpsData = new ArrayCollection;
 	}
+
+	public function unDock()
+	{
+		$this->dock->setBicycle(null);
+		$this->dock = null;
+	}
+
+	public function addCheckOut($checkout)
+	{
+		$this->checkOuts->add($checkout);
+		$checkout->setBicycle($this);
+	}
+
+	public function getCurrentCheckout()
+	{
+		foreach ($this->checkOuts as $co)
+		{
+			if ($co->getInTime() === null)
+			{
+				return $co;
+			}
+		}
+
+		return null;
+	}
+
+	public function setDock($dock)
+	{
+		$this->dock = $dock;
+		$dock->setBicycle($this);
+	}
 }
