@@ -90,4 +90,9 @@ class Bicycle extends AbstractEntity
 	{
 		$this->locked = !$this->locked;
 	}
+
+	public function isLocked()
+	{
+		return $this->locked;
+	}
 }
