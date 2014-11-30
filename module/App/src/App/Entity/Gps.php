@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Libs\Entity\AbstractEntity;
 
@@ -26,4 +27,24 @@ class Gps extends AbstractEntity
 	* @ORM\ManyToOne(targetEntity="Checkout", inversedBy="gpsData")
 	*/
 	protected $checkout;
+
+	/**
+	* @ORM\Column(type="float")
+	*/
+	protected $latitude;
+
+	/**
+	* @ORM\Column(type="float")
+	*/
+	protected $longitude;
+
+	/**
+	* @ORM\Column(type="datetime")
+	*/
+	protected $time;
+
+	public function __construct()
+	{
+		$this->time = new DateTime;
+	}
 }

@@ -28,6 +28,18 @@ class Student extends AbstractEntity
 	*/
 	protected $fees;
 
+	/**
+	* @ORM\Column(type="string")
+	*/
+	protected $universityId;
+
+	/**
+	* This flags controls whether a person is allowed to checkout bicycles
+	*
+	* @ORM\Column(type="boolean")
+	*/
+	protected $allowed = true;	
+
 	public function __construct()
 	{
 		$this->checkOuts = new ArrayCollection;

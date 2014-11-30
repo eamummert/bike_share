@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Libs\Entity\AbstractEntity;
@@ -38,8 +39,19 @@ class CheckOut extends AbstractEntity
 	*/
 	protected $fee;
 
+	/**
+	* @ORM\Column(type="datetime")
+	*/
+	protected $outTime;
+
+	/**
+	* @ORM\Column(type="datetime", nullable=true)
+	*/
+	protected $inTime;
+
 	public function __construct()
 	{
 		$this->gpsData = new ArrayCollection;
+		$this->outTime = new DateTime;
 	}
 }

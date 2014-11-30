@@ -26,4 +26,14 @@ class Fee extends AbstractEntity
 	* @ORM\OneToOne(targetEntity="Checkout", mappedBy="fee")
 	*/
 	protected $checkout;
+
+	/**
+	* @ORM\Column(type="integer")
+	*/
+	protected $charge;
+
+	/**
+	* @ORM\Column(type="boolean")
+	*/
+	protected $paid = false;
 }
