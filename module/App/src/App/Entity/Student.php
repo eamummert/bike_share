@@ -51,4 +51,10 @@ class Student extends AbstractEntity
 		$this->checkOuts->add($checkout);
 		$checkout->setStudent($this);
 	}
+
+	public function addFee($fee)
+	{
+		$this->fees->add($fee);
+		$fee->setStudent($this);
+	}
 }
