@@ -1,6 +1,14 @@
-cs409
+Bike Share Demo
 =====
 
-Bike Share Demo
+Installation:
 
-The css is all kinds of weird since I copied it from my personal site. Feel free to change it however.
+1. Install LAMP (or equivalent) web server.
+
+2. Clone this Git repository.
+
+3. Symlink the "public" folder to the server's document root folder.
+
+4. Within the repository, execute the command "php composer.phar install" to install necessary libraries.
+
+5. Update "config/local.config.php" with desired database information.
