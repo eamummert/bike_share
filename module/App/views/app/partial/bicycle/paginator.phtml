@@ -10,7 +10,8 @@
 		N/A
 	<?php endif ?>
 <?php elseif ($column == 'data'): ?>
-	<a href="<?= $this->url('app/gps/bike', ['bike-id' => $item->getId()]) ?>">View GPS</a>
+	<a href="<?= $this->url('app/gps/bike', ['bike-id' => $item->getId()]) ?>">GPS</a> |
+	<a href="<?= $this->url('app/bicycles/history', ['bike-id' => $item->getId()]) ?>">History</a>
 <?php elseif ($column == 'actions'): ?>
 	<?php if ($dock = $item->getDock()): ?>
 		<?php if (!$item->isLocked() && !$dock->isLocked()): ?>
@@ -19,10 +20,9 @@
 	<?php else: ?>
 		<a href="<?= $this->url('app/bicycles/checkin', ['bike-id' => $item->getId()]) ?>">Check-In</a> |
 	<?php endif ?>
-	<a href="<?= $this->url('app/bicycles/history', ['bike-id' => $item->getId()]) ?>">History</a>
 	<?php if ($item->isLocked()): ?>
-		| <a href="<?= $this->url('app/bicycles/lock', ['bike-id' => $item->getId()]) ?>">Unlock</a>
+		 <a href="<?= $this->url('app/bicycles/lock', ['bike-id' => $item->getId()]) ?>">Unlock</a>
 	<?php else: ?>
-		| <a href="<?= $this->url('app/bicycles/lock', ['bike-id' => $item->getId()]) ?>">Lock</a>
+		 <a href="<?= $this->url('app/bicycles/lock', ['bike-id' => $item->getId()]) ?>">Lock</a>
 	<?php endif ?>
 <?php endif ?>
