@@ -49,6 +49,12 @@ routes:
                             route: '/:bike-id/lock'
                             defaults: {action: 'lock'}
                         may_terminate: true
+                    lockall:
+                        type: 'Segment'
+                        options:
+                            route: '/:bike-id/lockall'
+                            defaults: {action: 'lockall'}
+                        may_terminate: true
                     history:
                         type: 'Segment'
                         options:
