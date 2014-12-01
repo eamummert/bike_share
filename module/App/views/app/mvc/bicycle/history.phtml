@@ -8,6 +8,7 @@
 		<th>In Dock</th>
 		<th>Student</th>
 		<th>Fee</th>
+		<th>GPS</th>
 	</tr>
 	<?php if (count($bike->getCheckOuts())): ?>
 		<?php foreach ($bike->getCheckOuts() as $co): ?>
@@ -18,11 +19,12 @@
 				<td><?= $co->getInDock() ? $co->getInDock()->getName() : '' ?></td>
 				<td><?= $co->getStudent() ? $co->getStudent()->getUsername() : '' ?></td>
 				<td><?= $co->feeToString() ?></td>
+				<td><a href="<?= $this->url('app/gps', ['checkout-id' => $co->getId()]) ?>">View</a></td>
 			</tr>
 		<?php endforeach ?>
 	<?php else: ?>
 		<tr>
-			<td colspan="6">There is no history for this bicycle</td>
+			<td colspan="7">There is no history for this bicycle</td>
 		</tr>
 	<?php endif ?>
 </table>

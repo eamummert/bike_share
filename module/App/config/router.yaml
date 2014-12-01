@@ -86,3 +86,8 @@ routes:
                             route: '/:bike-id/history'
                             defaults: {action: 'history'}
                         may_terminate: true
+            gps:
+                type: 'Segment'
+                options:
+                    route: 'gps-data/:checkout-id/view'
+                    defaults: {controller: 'App:Bicycle', action: 'gps'}

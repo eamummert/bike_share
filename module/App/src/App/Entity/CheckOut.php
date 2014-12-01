@@ -26,6 +26,7 @@ class CheckOut extends AbstractEntity
 
 	/**
 	* @ORM\OneToMany(targetEntity="Gps", mappedBy="checkout", cascade={"persist"})
+	* @ORM\OrderBy({"time"="ASC"})
 	*/
 	protected $gpsData;
 

@@ -131,6 +131,18 @@ class Bicycle extends AbstractController
         return compact('bike');
     }
 
+    public function gpsAction()
+    {
+        $co = $this->entity('CheckOut')->find($this->params('checkout-id'));
+        if (!$co)
+        {
+            $this->flash()->addErrorMessage('There is no check out with that ID');
+            return $this->redirect()->toRoute('app/bicycles');
+        }
+
+        return compact('co');
+    }
+
     public function LockAction()
     {
         $bike = $this->entity('Bicycle')->find($this->params('bike-id'));
