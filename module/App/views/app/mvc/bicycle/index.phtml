@@ -1,3 +1,4 @@
 <h1>Bicycles</h1>
-<a href="<?= $this->url('app/bicycles/lockall', ['bike-id' => 1]) ?>">Lock All</a>
+<a href="<?= $this->url('app/bicycles/lockall') ?>">Lock All</a>
+<a href="<?= $this->url('app/bicycles/unlockall') ?>">Unlock All</a>
 <?= $this->paginatorTable($bikes, 'app/partial/bicycle/paginator', ['class' => 'gray full-width']) ?>

@@ -24,6 +24,19 @@ routes:
                     route: 'docks'
                     defaults: {controller: 'App:Dock'}
                 may_terminate: true
+                child_routes:
+                    lockall:
+                        type: 'Segment'
+                        options:
+                            route: '/lockall'
+                            defaults: {action: 'lockall'}
+                        may_terminate: true
+                    unlockall:
+                        type: 'Segment'
+                        options:
+                            route: '/unlockall'
+                            defaults: {action: 'unlockall'}
+                        may_terminate: true
             bicycles:
                 type: 'Literal'
                 options:
@@ -52,8 +65,14 @@ routes:
                     lockall:
                         type: 'Segment'
                         options:
-                            route: '/:bike-id/lockall'
+                            route: '/lockall'
                             defaults: {action: 'lockall'}
+                        may_terminate: true
+                    unlockall:
+                        type: 'Segment'
+                        options:
+                            route: '/unlockall'
+                            defaults: {action: 'unlockall'}
                         may_terminate: true
                     history:
                         type: 'Segment'

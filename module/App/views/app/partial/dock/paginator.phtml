@@ -6,4 +6,10 @@
 	<?php else: ?>
 		N/A
 	<?php endif ?>
+<?php elseif ($column == 'locked'): ?>
+	<?php if ($item->isLocked()): ?>
+		Locked
+	<?php else: ?>
+		Open
+	<?php endif ?>
 <?php endif ?>

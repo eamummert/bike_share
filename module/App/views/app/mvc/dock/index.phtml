@@ -1,3 +1,4 @@
 <h1>Bicycle Docks</h1>
-
+<a href="<?= $this->url('app/docks/lockall') ?>">Lock All</a> | 
+<a href="<?= $this->url('app/docks/unlockall') ?>">Unlock All</a>
 <?= $this->paginatorTable($docks, 'app/partial/dock/paginator', ['class' => 'gray full-width']) ?>
