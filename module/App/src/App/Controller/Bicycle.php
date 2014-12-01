@@ -105,12 +105,12 @@ class Bicycle extends AbstractController
         {
             $checkout->setInTime(new DateTime);
             $dock->addCheckIn($checkout);
-        }
 
-        $fee = $checkout->assignFees();
-        if ($fee)
-        {
-            $checkout->getStudent()->addFee($fee);
+            $fee = $checkout->assignFees();
+            if ($fee)
+            {
+                $checkout->getStudent()->addFee($fee);
+            }
         }
         $this->entity()->flush();
 
