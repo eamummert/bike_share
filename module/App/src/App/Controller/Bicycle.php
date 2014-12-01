@@ -95,6 +95,10 @@ class Bicycle extends AbstractController
         }
 
         $bike->setDock($dock);
+        if ($bike->isLocked())
+        {
+            $dock->lock();
+        }
 
         $checkout = $bike->getCurrentCheckout();
         //this is for new bikes being docked initially but weren't checked out
