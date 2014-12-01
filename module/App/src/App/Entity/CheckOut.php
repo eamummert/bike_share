@@ -113,6 +113,9 @@ class CheckOut extends AbstractEntity
 				$fee->setCharge(1);
 			}
 			$this->setFee($fee);
+			return $fee;
 		}
+
+		return false;
 	}
 }
