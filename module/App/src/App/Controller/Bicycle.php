@@ -60,7 +60,7 @@ class Bicycle extends AbstractController
 
         $bike->addCheckOut($checkOut);
         $bike->unDock($checkOut);
-        //todo add to a user
+        $this->createGpsData($checkOut, rand(1, 4));
 
         $this->entity()->persist($student);
         $this->entity()->persist($checkOut);
@@ -169,5 +169,15 @@ class Bicycle extends AbstractController
         return $this->redirect()->toRoute('app/bicycles');
     }
 
-
+    public function createGpsData($checkout, $count)
+    {
+        for ($i = 0; $i < $count; $i++)
+        {
+            $gps = new Entity\Gps;
+            $gps->setRandLongitude(true);
+            $gps->setRandLatitude(true);
+            $checkout->addGps($gps);
+            $checkout->getBicycle()->addGps($gps);
+        }
+    }
 }

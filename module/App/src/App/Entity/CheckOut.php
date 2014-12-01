@@ -25,7 +25,7 @@ class CheckOut extends AbstractEntity
 	protected $bicycle;
 
 	/**
-	* @ORM\OneToMany(targetEntity="Gps", mappedBy="checkout")
+	* @ORM\OneToMany(targetEntity="Gps", mappedBy="checkout", cascade={"persist"})
 	*/
 	protected $gpsData;
 
@@ -117,5 +117,11 @@ class CheckOut extends AbstractEntity
 		}
 
 		return false;
+	}
+
+	public function addGps($gps)
+	{
+		$this->gpsData->add($gps);
+		$gps->setCheckout($this);
 	}
 }

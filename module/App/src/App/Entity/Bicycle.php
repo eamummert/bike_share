@@ -95,4 +95,10 @@ class Bicycle extends AbstractEntity
 	{
 		return $this->locked;
 	}
+
+	public function addGps($gps)
+	{
+		$this->gpsData->add($gps);
+		$gps->setBicycle($this);
+	}
 }

@@ -47,4 +47,14 @@ class Gps extends AbstractEntity
 	{
 		$this->time = new DateTime;
 	}
+
+	public function setRandLongitude()
+	{
+		$this->longitude = rand(-93654185, -93633564)/1000000;
+	}
+
+	public function setRandLatitude()
+	{
+		$this->latitude = rand(42022869, 42030245)/1000000;
+	}
 }
