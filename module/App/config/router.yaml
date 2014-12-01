@@ -18,6 +18,12 @@ routes:
                         options:
                             route: '/edit'
                             defaults: {action: 'edit'}
+            fees:
+                type: 'Literal'
+                options:
+                    route: 'fees'
+                    defaults: {controller: 'App:Fee'}
+                may_terminate: true
             docks:
                 type: 'Literal'
                 options:
