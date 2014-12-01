@@ -97,11 +97,7 @@ class Bicycle extends AbstractController
             $i++;
         }
 
-        $bike->setDock($dock);
-        if ($bike->isLocked())
-        {
-            $dock->lock();
-        }
+       $bike->setDock($dock);
 
         $checkout = $bike->getCurrentCheckout();
         //this is for new bikes being docked initially but weren't checked out
@@ -110,12 +106,12 @@ class Bicycle extends AbstractController
             $checkout->setInTime(new DateTime);
             $dock->addCheckIn($checkout);
         }
+
         $fee = $checkout->assignFees();
         if ($fee)
         {
             $checkout->getStudent()->addFee($fee);
         }
-        
         $this->entity()->flush();
 
         $this->flash()->addSuccessMessage('Bicycle has been checked in successfully');
