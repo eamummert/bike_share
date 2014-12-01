@@ -23,7 +23,7 @@ class Fee extends AbstractEntity
 	protected $student;
 
 	/**
-	* @ORM\OneToOne(targetEntity="Checkout", mappedBy="fee")
+	* @ORM\OneToOne(targetEntity="CheckOut", mappedBy="fee")
 	*/
 	protected $checkout;
 

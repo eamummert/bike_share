@@ -1,0 +1,9 @@
+<?php if ($column == 'student'): ?>
+	<?= $item->getStudent() ? $item->getStudent()->getUsername() : '' ?>
+<?php elseif ($column == 'charge'): ?>
+	$<?= $item->getCharge() ?>
+<?php elseif ($column == 'paid'): ?>
+	<?= $item->getPaid() ? 'Yes' : 'No' ?>
+<?php elseif ($column == 'date'): ?>
+	<?= $item->getCheckout() ? $item->getCheckout()->getInTime(true) : '' ?>
+<?php endif ?>
