@@ -89,5 +89,19 @@ routes:
             gps:
                 type: 'Segment'
                 options:
-                    route: 'gps-data/:checkout-id/view'
-                    defaults: {controller: 'App:Bicycle', action: 'gps'}
+                    route: 'gps-data'
+                    defaults: {controller: 'App:Gps'}
+                may_terminate: false
+                child_routes:
+                    bike:
+                        type: 'Segment'
+                        options:
+                            route: '/:bike-id/bike'
+                            defaults: {action: 'bike'}
+                        may_terminate: true
+                    checkout:
+                        type: 'Segment'
+                        options:
+                            route: '/:checkout-id/check-out'
+                            defaults: {action: 'checkout'}
+                        may_terminate: true

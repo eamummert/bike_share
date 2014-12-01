@@ -16,6 +16,7 @@ return [
 			'App:Dock' => 'App\Controller\Dock',
 			'App:Bicycle' => 'App\Controller\Bicycle',
 			'App:Fee' => 'App\Controller\Fee',
+			'App:Gps' => 'App\Controller\Gps',
         ],
     ],
     'doctrine' => [

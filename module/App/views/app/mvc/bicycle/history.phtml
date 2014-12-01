@@ -19,7 +19,7 @@
 				<td><?= $co->getInDock() ? $co->getInDock()->getName() : '' ?></td>
 				<td><?= $co->getStudent() ? $co->getStudent()->getUsername() : '' ?></td>
 				<td><?= $co->feeToString() ?></td>
-				<td><a href="<?= $this->url('app/gps', ['checkout-id' => $co->getId()]) ?>">View</a></td>
+				<td><a href="<?= $this->url('app/gps/checkout', ['checkout-id' => $co->getId()]) ?>">View</a></td>
 			</tr>
 		<?php endforeach ?>
 	<?php else: ?>

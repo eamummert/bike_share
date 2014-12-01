@@ -9,6 +9,8 @@
 	<?php else: ?>
 		N/A
 	<?php endif ?>
+<?php elseif ($column == 'data'): ?>
+	<a href="<?= $this->url('app/gps/bike', ['bike-id' => $item->getId()]) ?>">View GPS</a>
 <?php elseif ($column == 'actions'): ?>
 	<?php if ($dock = $item->getDock()): ?>
 		<?php if (!$item->isLocked() && !$dock->isLocked()): ?>

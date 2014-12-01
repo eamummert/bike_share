@@ -24,6 +24,9 @@ class Bicycle extends AbstractController
     				'label' => 'Dock',
                     'sortQuery' => 'd.name',
     			],
+                'data' => [
+                    'label' => 'Data',
+                ],
                 'actions' => [
                     'label' => 'Actions',
                 ],
@@ -130,19 +133,6 @@ class Bicycle extends AbstractController
 
         return compact('bike');
     }
-
-    public function gpsAction()
-    {
-        $co = $this->entity('CheckOut')->find($this->params('checkout-id'));
-        if (!$co)
-        {
-            $this->flash()->addErrorMessage('There is no check out with that ID');
-            return $this->redirect()->toRoute('app/bicycles');
-        }
-
-        return compact('co');
-    }
-
     public function LockAction()
     {
         $bike = $this->entity('Bicycle')->find($this->params('bike-id'));
@@ -169,6 +159,7 @@ class Bicycle extends AbstractController
         $this->entity()->flush();
         return $this->redirect()->toRoute('app/bicycles');
     }
+    
     public function UnlockallAction()
     {
         $bikes = $this->entity('Bicycle')->findAll();

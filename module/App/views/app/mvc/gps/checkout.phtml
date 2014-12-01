@@ -1,0 +1,23 @@
+<h1>Check-Out GPS Data</h1>
+
+<a href="<?= $this->url('app/bicycles/history', ['bike-id' => $co->getBicycle()->getId()]) ?>">Back to History</a>
+<table class="gray full-width">
+	<tr>
+		<th>Date</th>
+		<th>Latitude</th>
+		<th>Longitude</th>
+	</tr>
+	<?php if (count($co->getGpsData())): ?>
+		<?php foreach ($co->getGpsData() as $gps): ?>
+			<tr>
+				<td><?= $gps->getTime(true) ?></td>
+				<td><?= $gps->getLatitude() ?></td>
+				<td><?= $gps->getLongitude() ?></td
+			</tr>
+		<?php endforeach ?>
+	<?php else: ?>
+		<tr>
+			<td colspan="3">There is no gps for this check out</td>
+		</tr>
+	<?php endif ?>
+</table>

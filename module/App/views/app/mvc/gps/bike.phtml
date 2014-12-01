@@ -1,23 +1,25 @@
-<h1>GPS Data</h1>
+<h1>Bike GPS Data</h1>
 
-<a href="<?= $this->url('app/bicycles/history', ['bike-id' => $co->getBicycle()->getId()]) ?>">Back to History</a>
 <table class="gray full-width">
 	<tr>
 		<th>Date</th>
 		<th>Latitude</th>
 		<th>Longitude</th>
 	</tr>
-	<?php if (count($co->getGpsData())): ?>
+	<?php $count = 0 ?>
+	<?php foreach ($bike->getCheckOuts() as $co): ?>
 		<?php foreach ($co->getGpsData() as $gps): ?>
 			<tr>
 				<td><?= $gps->getTime(true) ?></td>
 				<td><?= $gps->getLatitude() ?></td>
 				<td><?= $gps->getLongitude() ?></td
 			</tr>
+			<?php $count++ ?>
 		<?php endforeach ?>
-	<?php else: ?>
+	<?php endforeach ?>
+	<?php if (!$count): ?>
 		<tr>
-			<td colspan="3">There is no gps for this check out</td>
+			<td colspan="3">There is no gps data for this bicycle</td>
 		</tr>
 	<?php endif ?>
 </table>
