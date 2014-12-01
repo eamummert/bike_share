@@ -3,12 +3,15 @@
 <?php elseif ($column == 'dock'): ?>
 	<?php if ($dock = $item->getDock()): ?>
 		<?= $dock->getName() ?>
+		<?php if ($dock->isLocked()): ?>
+			( Locked ) 
+		<?php endif ?>
 	<?php else: ?>
 		N/A
 	<?php endif ?>
 <?php elseif ($column == 'actions'): ?>
 	<?php if ($dock = $item->getDock()): ?>
-		<?php if (!$item->isLocked()): ?>
+		<?php if (!$item->isLocked() && !$dock->isLocked()): ?>
 			<a href="<?= $this->url('app/bicycles/checkout', ['bike-id' => $item->getId()]) ?>">Check-Out</a> |
 		<?php endif ?>
 	<?php else: ?>
